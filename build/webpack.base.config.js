@@ -10,21 +10,21 @@ module.exports = {
     entry: [
         'babel-polyfill',
         './src/index.js'
-    ], 
+    ],
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[name].bundle.js',
         publicPath: '/'
     },
     devtool: 'source-map',
-    
+
     module: {
         rules: [
             // babel-loader
-            { 
-                test: /\.js$/, 
-                exclude: /node_modules/, 
-                loader: 'happypack/loader?id=babel' 
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'happypack/loader?id=babel'
             },
             // css-loader
             {
@@ -77,7 +77,7 @@ module.exports = {
             id: 'babel',
             // 如何处理 .js 文件，用法和 Loader 配置中一样
             loaders: [
-              { 
+              {
                 loader: 'babel-loader'
               }
             ],
@@ -94,7 +94,7 @@ module.exports = {
 	    }
     },
     resolve: {
-        extensions: ['.js', '.md', '.txt'],
+        extensions: ['.js', '.jsx', '.json'],
         alias: {
             '@': path.join(__dirname, "../src")
         }
