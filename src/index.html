@@ -3,6 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>Webpack Sample Project</title>
+    <meta id="viewport" name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1, maximum-scale=1"
+        ratio="1"
+        >
+    <script>
+        var html = document.getElementsByTagName('html')[0];
+        function updateFontSize() {
+            var bWidth = document.documentElement.getBoundingClientRect().width;
+            var bRate = 23.4375; // 根据iphone6标准算出来的
+            var fontSize = bWidth / bRate;
+            if (!isWap()) {
+                fontSize = 16;
+            }
+            html.setAttribute('style', 'font-size: ' + fontSize + 'px');
+        }
+        function isWap() {
+            var userAgentInfo = navigator.userAgent.toLowerCase();
+            return userAgentInfo.indexOf('iphone') !== -1 || userAgentInfo.indexOf('android') !== -1;
+        }
+        window.addEventListener('resize', function () {
+            updateFontSize();
+        });
+        updateFontSize();
+    </script>
   </head>
   <body>
     <div id='app'>

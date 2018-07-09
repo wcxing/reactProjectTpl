@@ -1,20 +1,3 @@
-// import _ from 'lodash'
-// const test = () => {
-//     console.log('test')
-// }
-// test()
-
-// function timeout(ms) {
-//     return new Promise((resolve) => {
-//         setTimeout(resolve, ms);
-//     });
-// }
-
-// async function asyncPrint(value, ms) {
-//     await timeout(ms);
-//     console.log(value);
-// }
-// asyncPrint('hello world', 2000);
 
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -26,24 +9,16 @@ import './assets/style/test04.styl'
 import './assets/font/icomoon/style.css'
 
 const rootElement = document.querySelector('#app')
-// ReactDOM.render(
-//   <div>
-//     <Route text="hello world!" />
-//   </div>
-//   , rootElement
-// )
+const env = _ENV_
 
 const renders = Component =>
   ReactDOM.render(
-    <Component />,
+    <div>
+      <h2>hello world!</h2>
+      <h4>当前环境是：{env}</h4>
+      <Component />
+    </div>,
     rootElement
 )
 renders(Route)
-// const render = Component => {
-//   ReactDOM.render(
-//     <Component />
-//     , rootElement
-//   )
-// }
 
-// render(Routers) // 首次渲染
