@@ -39,6 +39,7 @@ class Login extends PureComponent {
     return (
       <div>
         <h2>this is loginPage!</h2>
+        <div className="img-test-less">test less!</div>
         <button type="button" onClick={() => this.getRequist()}>发起请求</button>
       </div>
     )

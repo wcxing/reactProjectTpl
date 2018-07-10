@@ -15,6 +15,7 @@ class Home extends PureComponent {
     return (
       <div>
         <h2> this is HomePage! </h2>
+        <div className="img-test-1">test css!</div>
       </div>
     )
   }

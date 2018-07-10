@@ -1,13 +1,12 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.config.js')
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'development',
-  output: {
-    publicPath: '/'
-  },
+  devtool: 'cheap-eval-source-map',
   devServer: {
     host: '0.0.0.0',
     port: 8088,
@@ -21,6 +20,9 @@ module.exports = merge(baseWebpackConfig, {
     },
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, '../src/index.html')
+    }),
     new webpack.DefinePlugin({
       _ENV_: JSON.stringify('dev')
     })

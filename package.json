@@ -5,10 +5,10 @@
   "private": true,
   "scripts": {
     "start": "npm run dev",
-    "dev": "webpack-dev-server --config ./build/webpack.dev.config.js --progress --color",
-    "test": "webpack --config ./build/webpack.test.config.js --progress",
-    "beta": "webpack --config ./build/webpack.beta.config.js --progress",
-    "prod": "webpack --config ./build/webpack.prod.config.js --progress"
+    "dev": "webpack-dev-server --config ./build/webpack.dev.config.js --color",
+    "test": "webpack --config ./build/webpack.test.config.js",
+    "beta": "webpack --config ./build/webpack.beta.config.js",
+    "prod": "webpack --config ./build/webpack.prod.config.js"
   },
   "author": "",
   "license": "ISC",

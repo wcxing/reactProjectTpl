@@ -1,5 +1,4 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // happypack
 const HappyPack = require('happypack')
@@ -11,13 +10,6 @@ module.exports = {
     'babel-polyfill',
     './src/index.js'
   ],
-  output: {
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
-    publicPath: '/'
-  },
-  devtool: 'source-map',
-
   module: {
     rules: [
       // babel-loader
@@ -63,13 +55,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, '../src/index.html')
-    }),
     // 抽离css
     new MiniCssExtractPlugin({
       filename: '[name].css',
-      chunkFilename: '[id].css'
+      chunkFilename: '[name].[id].css'
     }),
     // happypack
     new HappyPack({
@@ -85,9 +74,8 @@ module.exports = {
           loader: 'eslint-loader'
         }
       ],
-      threadPool: HappyThreadPool,
+      threadPool: HappyThreadPool
       // ... 其它配置项
-      cache: true
     }),
   ],
   // 分块打包
