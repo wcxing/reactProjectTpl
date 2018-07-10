@@ -19,4 +19,4 @@ export default function asyncComponent(importComponent) {
     }
   }
   return AsyncComponent
-}  
+}

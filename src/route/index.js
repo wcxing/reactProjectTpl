@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { PureComponent } from 'react'
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 import _ from 'lodash'
