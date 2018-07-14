@@ -22,7 +22,7 @@ class Login extends PureComponent {
     this._privateFn()
   }
   getRequist() {
-    axios.get('/mock/login/index.json').then(res => {
+    axios.get('mock/login/index.json').then(res => {
       console.log(res)
     })
   }

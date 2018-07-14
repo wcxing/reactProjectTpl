@@ -11,7 +11,7 @@ module.exports = merge(baseWebpackConfig, {
     host: '0.0.0.0',
     port: 8088,
     publicPath: '/',
-    contentBase: path.resolve(__dirname, 'src'),
+    contentBase: path.resolve(__dirname, '../src'),
     historyApiFallback: true,
     // disableHostCheck: true
     // 允许开发服务器访问本地服务器的包JSON文件，防止跨域
