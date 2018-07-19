@@ -1,9 +1,6 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-// happypack
-const HappyPack = require('happypack')
-const os = require('os')
-const HappyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length }) //启动线程池
+
 
 module.exports = {
   entry: [
@@ -59,24 +56,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[name].[id].css'
-    }),
-    // happypack
-    new HappyPack({
-      // 用唯一的标识符 id 来代表当前的 HappyPack 是用来处理一类特定的文件
-      id: 'babel',
-      // 如何处理 .js 文件，用法和 Loader 配置中一样
-      loaders: [
-        {
-          loader: 'babel-loader'
-        },
-        {
-          options: { configFile: path.resolve(__dirname, '../.eslintrc') },
-          loader: 'eslint-loader'
-        }
-      ],
-      threadPool: HappyThreadPool
-      // ... 其它配置项
-    }),
+    })
   ],
   // 分块打包
   optimization: {
