@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const merge = require('webpack-merge')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+
+// 打包分析
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin // eslint-disable-line
 // happypack
 const HappyPack = require('happypack')
 const os = require('os')
@@ -24,6 +27,8 @@ module.exports = merge(baseWebpackConfig, {
       template: path.join(__dirname, '../src/index.html'),
       filename: '../index.html' // 可定义html输出路径，相对于 output.path 目录
     }),
+    // 打包分析
+    // new BundleAnalyzerPlugin(),
     // happypack
     new HappyPack({
       // 用唯一的标识符 id 来代表当前的 HappyPack 是用来处理一类特定的文件
@@ -61,8 +66,19 @@ module.exports = merge(baseWebpackConfig, {
       name: 'runtime'
     },
     splitChunks: {
+      maxInitialRequests: 6, // 最大初始化请求数
       cacheGroups: {
         // 打包第三方文件
+        // 在 prod 环境是会有maxInitialRequests参数的限制
+        // webpack会自动打包vender，vender过大时，我们提取出我们想要的文件即可，剩下的会打到vender中
+        react: {
+          test: /node_modules(\/react|\react-dom)/,
+          // chunks: all,
+          // name: 're'
+        },
+        lib: {
+          test: /node_modules\/lodash/
+        },
         // vendor: {
         //   test: /node_modules/,
         //   chunks: 'all',
